@@ -1,5 +1,4 @@
-
-// import { FormEvent, useState } from 'react';
+import { FormEvent, useState } from 'react';
 import { Button } from '../ui/button';
 import {
   Dialog,
@@ -12,11 +11,27 @@ import {
 } from '../ui/dialog';
 import { Input } from '../ui/input';
 import { Label } from '../ui/label';
-// import { Input } from '../ui/input';
-// import { Label } from '../ui/label';
+
 const AddTodoModal = () => {
-    return (
-<Dialog>
+  const [task, setTask] = useState('');
+  const [description, setDescription] = useState('');
+
+  const onSubmit = (e: FormEvent) => {
+    console.log({task,description})
+    e.preventDefault();
+
+
+    // const randomString = Math.random().toString(36).substring(2, 7);
+
+    // const taskDetails = {
+    //   id: randomString,
+    //   title: task,
+    //   description: description,
+    // };
+  };
+
+  return (
+    <Dialog>
       <DialogTrigger asChild>
         <Button className="bg-primary-gradient text-xl font-semibold">
           Add todo
@@ -29,14 +44,14 @@ const AddTodoModal = () => {
             Add your tasks that you want to finish.
           </DialogDescription>
         </DialogHeader>
-        {/* <form onSubmit={onSubmit}> */}
+        <form onSubmit={onSubmit}>
           <div className="grid gap-4 py-4">
             <div className="grid grid-cols-4 items-center gap-4">
               <Label htmlFor="task" className="text-right">
                 Task
               </Label>
               <Input
-                // onBlur={(e) => setTask(e.target.value)}
+                onBlur={(e) => setTask(e.target.value)}
                 id="task"
                 className="col-span-3"
               />
@@ -46,7 +61,7 @@ const AddTodoModal = () => {
                 Description
               </Label>
               <Input
-                // onBlur={(e) => setDescription(e.target.value)}
+                onBlur={(e) => setDescription(e.target.value)}
                 id="description"
                 className="col-span-3"
               />
@@ -57,10 +72,10 @@ const AddTodoModal = () => {
               <Button type="submit">Save changes</Button>
             </DialogClose>
           </div>
-        {/* </form> */}
+        </form>
       </DialogContent>
     </Dialog>
-    );
+  );
 };
 
 export default AddTodoModal;

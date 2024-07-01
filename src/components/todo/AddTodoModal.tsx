@@ -11,7 +11,7 @@ import {
 } from '../ui/dialog';
 import { Input } from '../ui/input';
 import { Label } from '../ui/label';
-import { useAppDispatch, useAppSelector } from '@/redux/hook';
+import { useAppDispatch} from '@/redux/hook';
 import { addTodo } from '@/redux/features/todoSlice';
 
 const AddTodoModal = () => {

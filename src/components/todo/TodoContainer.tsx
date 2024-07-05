@@ -11,6 +11,11 @@ const TodoContainer = () => {
 
     //from server
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    // const { data:todos, error, isLoading } = useGetTodosQuery(undefined,{
+    //   pollingInterval: 1000,
+    // });
+
+   //another way instead of polling interva.
     const { data:todos, error, isLoading } = useGetTodosQuery(undefined);
     if(isLoading){
       return <p>Loading..</p>

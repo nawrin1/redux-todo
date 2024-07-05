@@ -4,8 +4,11 @@ import AddTodoModal from "./AddTodoModal";
 import TodoCard from "./TodoCard";
 import TodoFilter from "./TodoFilter";
 import { useGetTodosQuery } from "@/redux/api/api";
+import { useState } from "react";
 
 const TodoContainer = () => {
+  const [priority,setPriority]=useState("")
+  console.log(priority)
     // const {todos}=useAppSelector((state)=>state.todos)
     // state.todos mane store.ts e todos name reducer ta naming kora tai, ar porer {todos} ta holo actual state ta cz amra initual array ta todos namok key te store kore rakhsi in an obj
 
@@ -16,7 +19,7 @@ const TodoContainer = () => {
     // });
 
    //another way instead of polling interva.
-    const { data:todos, error, isLoading } = useGetTodosQuery(undefined);
+    const { data:todos, error, isLoading } = useGetTodosQuery(priority);
     if(isLoading){
       return <p>Loading..</p>
     }
@@ -27,7 +30,7 @@ const TodoContainer = () => {
             {/* <Button>Add to do</Button>
             <Button>filter</Button> */}
                     <AddTodoModal/>
-                    <TodoFilter />
+                    <TodoFilter priority={priority} setPriority={setPriority}/>
             
         </div>
         <div className="bg-primary-gradient w-full h-full rounded-xl  p-[5px]">
